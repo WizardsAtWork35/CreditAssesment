@@ -27,6 +27,14 @@ public class GlobalExceptionHandler {
 	return new ResponseEntity<>(errorDto,HttpStatus.OK);
 	}
 	
+	@ExceptionHandler(RulesNotFoundException.class)
+	public ResponseEntity<ErrorDto> RulesNotFoundException(RulesNotFoundException e){
+	ErrorDto errorDto = new ErrorDto();
+	errorDto.setErrorMessage(e.getMessage());
+	errorDto.setErrorCode(Constant.RULES_NOT_FOUND);
+	return new ResponseEntity<>(errorDto,HttpStatus.OK);
+	}
+	
 	
 
 }

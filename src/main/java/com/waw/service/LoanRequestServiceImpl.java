@@ -12,6 +12,8 @@ import com.waw.dto.LoanResponseDto;
 import com.waw.entity.LoanRequest;
 import com.waw.entity.LoanRequestRule;
 import com.waw.entity.Rule;
+import com.waw.exception.LoanRequestNotFoundException;
+import com.waw.exception.LoanRequestRuleNotFoundException;
 import com.waw.exception.RulesNotFoundException;
 import com.waw.repository.LoanRequestRepository;
 import com.waw.repository.LoanRequestRuleRepository;
@@ -31,8 +33,12 @@ public class LoanRequestServiceImpl implements LoanRequestService {
 	LoanRequestRuleRepository loanRequestRuleRepository;
 
 	/**
-	 * @author hackathon @
-	 * @throws RulesNotFoundException
+	 * @author Yoga
+	 * @since 2020-02-20
+	 * @param loanRequesDto of loan request raised.
+	 * @return LoanResponseDto. contains message.
+	 * @throws RulesNotFoundException - thrown if the Rules are not presented.
+	 * 
 	 */
 	@Override
 	public LoanResponseDto requestForLoan(LoanRequestDto loanRequestDto) throws RulesNotFoundException {
@@ -51,7 +57,7 @@ public class LoanRequestServiceImpl implements LoanRequestService {
 		loanRequest.setAssertValue(loanRequestDto.getAssertValue());
 		loanRequestRepository.save(loanRequest);
 		List<Rule> rules = ruleRepository.findAll();
-		if(rules.isEmpty()) {
+		if (rules.isEmpty()) {
 			throw new RulesNotFoundException(Constant.RULES_NOT_FOUND);
 		}
 		rules.forEach(rule -> {
