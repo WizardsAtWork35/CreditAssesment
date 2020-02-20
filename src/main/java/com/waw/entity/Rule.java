@@ -7,11 +7,11 @@ import lombok.Data;
 
 @Entity
 @Data
-public class User {
+public class Rule {
+	
 	@Id
-	private Integer userId;
-	private String userName;
-	private String education;
-	private String occupation;
+	private Integer ruleId;
+	private String ruleName;
+	private Double threshold;
 
 }
