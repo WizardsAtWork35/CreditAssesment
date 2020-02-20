@@ -12,7 +12,7 @@ import lombok.Data;
 @Entity
 @Data
 public class LoanRequestRule {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer loanRequestRuleId;
@@ -23,6 +23,5 @@ public class LoanRequestRule {
 	@JoinColumn(name = "rule_id")
 	private Rule rule;
 	private String status;
-	
 
 }

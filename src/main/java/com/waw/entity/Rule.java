@@ -8,7 +8,7 @@ import lombok.Data;
 @Entity
 @Data
 public class Rule {
-	
+
 	@Id
 	private Integer ruleId;
 	private String ruleName;

@@ -28,7 +28,7 @@ public class LoanRequestServiceImpl implements LoanRequestService {
 	@Autowired
 	RuleRepository ruleRepository;
 	@Autowired
-	LoanRequestRuleRepository LoanRequestRuleRepository;
+	LoanRequestRuleRepository loanRequestRuleRepository;
 
 	/**
 	 * @author hackathon @
@@ -59,12 +59,12 @@ public class LoanRequestServiceImpl implements LoanRequestService {
 			loanRequestRule.setLoanRequest(loanRequest);
 			loanRequestRule.setRule(rule);
 			loanRequestRule.setStatus(Constant.STATUS);
-			LoanRequestRuleRepository.save(loanRequestRule);
+			loanRequestRuleRepository.save(loanRequestRule);
 		});
 		LoanResponseDto loanResponseDto = new LoanResponseDto();
 		loanResponseDto.setMessage(Constant.SUCESSES_MESSAGE);
 		loanResponseDto.setStatus(Constant.STATUS_CODE);
-		loanResponseDto.setLoanId(loanRequest.getLoanId());
+		loanResponseDto.setLoanId(loanRequest.getLoanRequestId());
 
 		return loanResponseDto;
 	}
